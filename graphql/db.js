@@ -39,8 +39,8 @@ let movies = [
 export const getMovies = () => movies
 
 export const getById = id => {
-  const filteredPeople = people.filter(person => person.id === id)
-  return filteredPeople[0]
+  const filteredMovies = movies.filter(movie => movie.id === id)
+  return filteredMovies[0]
 }
 
 export const deleteMovie = id => {
@@ -51,4 +51,14 @@ export const deleteMovie = id => {
   } else {
     return false
   }
+}
+
+export const addMovie = (name, score) => {
+  const newMovie = {
+    id: movies.length + 1,
+    score,
+    name
+  }
+  movies.push(newMovie)
+  return newMovie
 }
