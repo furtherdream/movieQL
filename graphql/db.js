@@ -1,64 +1,9 @@
-let movies = [
-  {
-    id: 0,
-    name: "Nicolas",
-    score: 1
-  },
-  {
-    id: 1,
-    name: "Jisu",
-    score: 1
-  },
-  {
-    id: 2,
-    name: "Japan Guy",
-    score: 18
-  },
-  {
-    id: 3,
-    name: "Daal",
-    score: 18
-  },
-  {
-    id: 4,
-    name: "JD",
-    score: 99
-  },
-  {
-    id: 5,
-    name: "moondaddi",
-    score: 21
-  },
-  {
-    id: 6,
-    name: "flynn",
-    score: 22
-  }
-]
+import fetch from "node-fetch"
+const API_URL = "https://yts.am/api/v2/list_movies.json"
 
-export const getMovies = () => movies
-
-export const getById = id => {
-  const filteredMovies = movies.filter(movie => movie.id === id)
-  return filteredMovies[0]
-}
-
-export const deleteMovie = id => {
-  const cleanedMovies = movies.filter(movie => movie.id !== id)
-  if (movies.length > cleanedMovies.length) {
-    movies = cleanedMovies
-    return true
-  } else {
-    return false
-  }
-}
-
-export const addMovie = (name, score) => {
-  const newMovie = {
-    id: movies.length + 1,
-    score,
-    name
-  }
-  movies.push(newMovie)
-  return newMovie
+// 몇개 보여줄지랑 평점 기준 필터 만들기 위해
+export const getMovies = (limit, rating) => {
+  fetch(`${API_URL}`)
+    .then(res => res.json())
+    .then(json => json.data.movies)
 }

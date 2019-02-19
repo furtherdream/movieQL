@@ -1,16 +1,12 @@
 type Movie {
   id: Int!
-  name: String!
-  score: Int!
+  title: String!
+  rating: Float!
+  summary: String!
+  language: String!
+  medium_cover_image: String!
 }
 
 type Query {
   movies: [Movie]!
-  movie(id: Int!): Movie
-}
-
-type Mutation {
-  # id는 자동으로 입력되므로 name 과 score만 입려하면 됨
-  addMovie(name: String!, score: Int!): Movie! #이게 뮤테이션임
-  deleteMovie(id: Int!): Boolean! # deleteMovie 함수는 true false만 반환하므로
 }
