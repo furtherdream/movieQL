@@ -1,6 +1,6 @@
 // Query는 database에게는 문제 같은 거임.
 // 그래서 이 쿼리를 어떠한 방식으로 해결해야 함
-import { getMovies, getById, addMovie } from "./db"
+import { getMovies, getById, addMovie, deleteMovie } from "./db"
 
 const resolvers = {
   Query: {
@@ -10,7 +10,8 @@ const resolvers = {
     // console.log(args)로 찍히는 값이 { id: 1 } 이었음
   },
   Mutation: {
-    addMovie: (_, { name, score }) => addMovie(name, score)
+    addMovie: (_, { name, score }) => addMovie(name, score),
+    deleteMovie: (_, { id }) => deleteMovie(id)
   }
 }
 
